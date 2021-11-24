@@ -6,7 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
@@ -16,7 +16,7 @@ import java.math.BigDecimal;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class CreateAmountRequest implements Serializable {
 
-    @JsonProperty("amount")
-    @NotEmpty(message = "Enter current price")
+    @JsonProperty("currentPrice")
+    @NotNull(message = "Enter current price")
     private BigDecimal currentPrice;
 }

@@ -26,7 +26,7 @@ public class Stock implements Serializable {
 
     @Embedded
     @AttributeOverride(name = "currentPrice", column = @Column(name = "current_price", nullable = false))
-    private Amount currentPrice;
+    private Amount amount;
 
     @Column(name = "create_date", nullable = false)
     private LocalDateTime creationDate;
@@ -34,9 +34,9 @@ public class Stock implements Serializable {
     @Column(name = "last_update")
     private LocalDateTime modifiedDate;
 
-    public Stock(String name, Amount currentPrice) {
+    public Stock(String name, Amount amount) {
         this.name = name;
-        this.currentPrice = currentPrice;
+        this.amount = amount;
 
     }
 

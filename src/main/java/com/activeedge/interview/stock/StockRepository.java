@@ -14,8 +14,9 @@ import java.util.Optional;
 @Repository
 @Transactional(readOnly = true)
 public interface StockRepository extends JpaRepository<Stock, Long> {
-    @Query(value = "SELECT * FROM stock  LIMIT 100", nativeQuery = true)
-    List<StockDto> findAllAsStockDto();
+    @Query(value = " SELECT s.name AS name, s.amount AS amount, s.modifiedDate AS modifiedDate FROM Stock s ORDER BY s.modifiedDate")
+    List<StockDto> findAllStocks();
 
-    Optional<StockDto> findFirstById(@Param("id") Long id);
+
+    Optional<StockDto> findFirstByStockId(@Param("id") Long id);
 }

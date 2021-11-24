@@ -22,22 +22,23 @@ public class StockService {
     private final StockRepository stockRepository;
 
     public List<StockDto> getAllStocks() {
-        return stockRepository.findAllAsStockDto();
+        return stockRepository.findAllStocks();
     }
 
     public StockDto getStock(Long stockId) {
-        return stockRepository.findFirstById(stockId).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Stock not found"));
+        return stockRepository.findFirstByStockId(stockId).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Stock not found"));
     }
 
     public String updateStock(Long stockId, UpdateStockRequest updateStockRequest) {
         var stock = getStockInRW(stockId);
-        if (!Objects.isNull(updateStockRequest.getAmount())) stock.setCurrentPrice(new Amount(updateStockRequest.getAmount()));
+        if (!Objects.isNull(updateStockRequest.getAmount())) stock.setAmount(new Amount(updateStockRequest.getAmount()));
         if (!Objects.isNull(updateStockRequest.getName())) stock.setName(updateStockRequest.getName());
         return "Updated";
     }
 
     public String deleteStock(Long stockId) {
-        stockRepository.deleteById(stockId);
+        var stock = getStockInRW(stockId);
+        stockRepository.deleteById(stock.getStockId());
         return "Deleted";
     }
 

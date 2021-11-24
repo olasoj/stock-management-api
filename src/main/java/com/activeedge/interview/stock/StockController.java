@@ -18,31 +18,34 @@ public class StockController {
     private static final String MESSAGE = "message";
     private final StockService stockService;
 
-    @GetMapping(value = "")
-    public void teamMembers(
-            HttpServletRequest request, HttpServletResponse response) {
-        ResponseModel.responseSuccess(request, response, HttpStatus.OK, "team_members",
+    @GetMapping(path = "")
+    public void getAllStocks(HttpServletRequest request, HttpServletResponse response) {
+        ResponseModel.responseSuccess(request, response, HttpStatus.OK, "stocks",
                 stockService.getAllStocks());
     }
 
-    @PostMapping(value = "/create")
-    public void teamMember(@Valid @RequestBody CreateStockRequest createStockRequest,
-                           HttpServletRequest request, HttpServletResponse response) {
+    @PostMapping(path = "")
+    public void createStock(@Valid @RequestBody CreateStockRequest createStockRequest,
+                            HttpServletRequest request, HttpServletResponse response) {
         ResponseModel.responseSuccess(request, response, HttpStatus.CREATED, MESSAGE,
                 stockService.createStock(createStockRequest));
     }
 
+    @GetMapping(path = "/{stockId}")
+    public void getStock(@PathVariable(value = "stockId") Long stockId, HttpServletRequest request, HttpServletResponse response) {
+        ResponseModel.responseSuccess(request, response, HttpStatus.OK, MESSAGE,
+                stockService.getStock(stockId));
+    }
+
     @PutMapping(value = "/{stockId}")
-    public void teamMember(@Valid @RequestBody UpdateStockRequest updateStockRequest,
-                           @PathVariable(value = "stockId") Long stockId,
-                           HttpServletRequest request, HttpServletResponse response) {
+    public void updateStock(@Valid @RequestBody UpdateStockRequest updateStockRequest, @PathVariable(value = "stockId") Long stockId,
+                            HttpServletRequest request, HttpServletResponse response) {
         ResponseModel.responseSuccess(request, response, HttpStatus.OK, MESSAGE,
                 stockService.updateStock(stockId, updateStockRequest));
     }
 
     @DeleteMapping(value = "/{stockId}")
-    public void teamMember(@PathVariable(value = "stockId") Long stockId,
-                           HttpServletRequest request, HttpServletResponse response) {
+    public void deleteStock(@PathVariable(value = "stockId") Long stockId, HttpServletRequest request, HttpServletResponse response) {
         ResponseModel.responseSuccess(request, response, HttpStatus.OK, MESSAGE,
                 stockService.deleteStock(stockId));
     }

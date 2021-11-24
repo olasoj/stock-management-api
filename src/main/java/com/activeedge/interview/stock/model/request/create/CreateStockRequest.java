@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 @Data
@@ -20,7 +21,7 @@ public class CreateStockRequest implements Serializable {
     private String name;
 
     @JsonProperty("amount")
-    @NotEmpty(message = "Enter Amount")
+    @NotNull(message = "Enter Amount")
     @Valid
     private CreateAmountRequest amount;
 }
