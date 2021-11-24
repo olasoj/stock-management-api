@@ -1,4 +1,4 @@
-package com.activeedge.interview.stock;
+package com.activeedge.interview.stock.model.entity;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

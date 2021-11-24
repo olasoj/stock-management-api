@@ -1,4 +1,4 @@
-package com.activeedge.interview.stock;
+package com.activeedge.interview.stock.model.entity;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -25,10 +25,7 @@ public class Stock implements Serializable {
     private String name;
 
     @Embedded
-    @AttributeOverride(name = "documentFormat", column = @Column(name = "valid_id_document_format", nullable = false))
-    @AttributeOverride(name = "documentLink", column = @Column(name = "valid_id_link", nullable = false))
-    @AttributeOverride(name = "documentName", column = @Column(name = "valid_id_name", nullable = false))
-    @Column(name = "current_price", nullable = false)
+    @AttributeOverride(name = "currentPrice", column = @Column(name = "current_price", nullable = false))
     private Amount currentPrice;
 
     @Column(name = "create_date", nullable = false)
