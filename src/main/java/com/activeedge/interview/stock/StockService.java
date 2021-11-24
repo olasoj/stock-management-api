@@ -15,8 +15,11 @@ import java.util.Set;
 public class StockService {
     private final StockRepository stockRepository;
 
-
     public Set<StockDto> getAllStocks() {
+        return null;
+    }
+
+    public StockDto getStock() {
         return null;
     }
 
