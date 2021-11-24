@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 
 @JsonInclude(JsonInclude.Include.NON_DEFAULT)
 public interface StockDto {
-    String getStockId();
+    Long getStockId();
 
     String getName();
 
