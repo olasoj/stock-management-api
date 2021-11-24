@@ -1,13 +1,19 @@
 package com.activeedge.interview.stock;
 
-import com.activeedge.interview.stock.model.request.CreateStockRequest;
-import com.activeedge.interview.stock.model.request.UpdateStockRequest;
+import com.activeedge.interview.stock.model.entity.Amount;
+import com.activeedge.interview.stock.model.entity.Stock;
+import com.activeedge.interview.stock.model.request.create.CreateAmountRequest;
+import com.activeedge.interview.stock.model.request.create.CreateStockRequest;
+import com.activeedge.interview.stock.model.request.update.UpdateStockRequest;
 import com.activeedge.interview.stock.model.response.StockDto;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.server.ResponseStatusException;
 
-import java.util.Set;
+import java.util.List;
+import java.util.Objects;
 
 @Service
 @Transactional
@@ -15,25 +21,34 @@ import java.util.Set;
 public class StockService {
     private final StockRepository stockRepository;
 
-    public Set<StockDto> getAllStocks() {
-        return null;
+    public List<StockDto> getAllStocks() {
+        return stockRepository.findAllAsStockDto();
     }
 
-    public StockDto getStock() {
-        return null;
+    public StockDto getStock(Long stockId) {
+        return stockRepository.findFirstById(stockId).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Stock not found"));
     }
 
     public String updateStock(Long stockId, UpdateStockRequest updateStockRequest) {
-
-
-        return null;
+        var stock = getStockInRW(stockId);
+        if (!Objects.isNull(updateStockRequest.getAmount())) stock.setCurrentPrice(new Amount(updateStockRequest.getAmount()));
+        if (!Objects.isNull(updateStockRequest.getName())) stock.setName(updateStockRequest.getName());
+        return "Updated";
     }
 
     public String deleteStock(Long stockId) {
-        return null;
+        stockRepository.deleteById(stockId);
+        return "Deleted";
     }
 
     public String createStock(CreateStockRequest createStockRequest) {
-        return null;
+        CreateAmountRequest amount = createStockRequest.getAmount();
+        Stock newStock = new Stock(createStockRequest.getName(), new Amount(amount));
+        stockRepository.save(newStock);
+        return "Created";
+    }
+
+    private Stock getStockInRW(Long stockId) {
+        return stockRepository.findById(stockId).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Stock not found"));
     }
 }

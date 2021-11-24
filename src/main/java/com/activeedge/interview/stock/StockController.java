@@ -1,7 +1,7 @@
 package com.activeedge.interview.stock;
 
-import com.activeedge.interview.stock.model.request.CreateStockRequest;
-import com.activeedge.interview.stock.model.request.UpdateStockRequest;
+import com.activeedge.interview.stock.model.request.create.CreateStockRequest;
+import com.activeedge.interview.stock.model.request.update.UpdateStockRequest;
 import com.activeedge.interview.util.model.response.ResponseModel;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 @RestController
-@RequestMapping("/team")
+@RequestMapping("/stocks")
 @AllArgsConstructor
 public class StockController {
     private static final String MESSAGE = "message";
