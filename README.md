@@ -1,5 +1,3 @@
-![Logo](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/th5xamgrr6se0x5ro4g6.png)
-
 # ActiveEdge Software Developer Exercise
 
 Design and code a simple Java Spring application that manages stock
@@ -103,20 +101,15 @@ Question 1
 
 Question 2
 
-### input
-
-- First, it was necessary to determine what data structure would be used to represent the Centiliters servers would use.
-
 ### Processing
 
-- next was to determine the sequence in which the data would be updated.
-- Then some rules were established: if the row is 0, we cannot decrement the row. If the row is in column 0, we cannot decrement the column. If the row is M-1, we cannot increment the row. If the row is in column 0, we cannot increment the column. If the row is M-0, we cannot increment the row. If the row is M-1, we cannot increment the row.
-- Identified all common cases and defined behaviors for each case.
-- The initial date was set to 0 and incremented if all servers were not updated, else the updated day would be returned.
+- Sort the array in them variable
+- get the lowest non repeating integer.
+- get the index of the lowest non repeating integer.
 
 ### output
 
-- The output returned is the total number of days it took to update all servers
+- Smallest non repeating integer
 
 ## Documentation
 
