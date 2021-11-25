@@ -1,0 +1,22 @@
+title Get Stock Information
+
+actor User
+User->+Postman: Get Stock Detials
+
+Postman->+Stock Controller: Get Stock Detials
+Stock Controller->+StockService: Get Stock Detials
+StockService-->+StockRepository: Get Stock Detials
+
+
+alt Stock Not Found
+    StockRepository-->-StockService: Stock Not Found
+    StockService-->-Stock Controller: Stock Not Found
+    Stock Controller-->-Postman: Stock Not Found
+
+else Return Stock Info
+    StockRepository-->+StockService: stock Info.
+    StockService-->+Stock Controller: stock info
+    Stock Controller-->-Postman: stock info
+    
+    
+end

@@ -1,0 +1,22 @@
+title Create Stock
+
+actor User
+User->+Postman: Create Stock
+
+Postman->+Stock Controller: Create Stock
+Stock Controller->+StockService: Create Stock
+
+
+
+alt Validation Error
+    StockService-->-Stock Controller: Validation Error
+    Stock Controller -->-Postman: Validation Error
+
+else Create Stock
+    StockService-->+StockRepository: Create Stock
+    StockRepository-->- StockService: Stock Created
+    StockService-->+Stock Controller: response
+    Stock Controller -->-Postman: response
+    
+    
+end

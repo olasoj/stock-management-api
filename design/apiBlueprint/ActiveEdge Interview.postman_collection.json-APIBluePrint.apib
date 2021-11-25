@@ -1,0 +1,512 @@
+FORMAT: 1A
+HOST: http://localhost:8080/api
+
+# ActiveEdge Interview
+
+
+# Group Misc
+
+## Stocks [/stocks]
+
+### Get Stocks [GET]
+
++ Response 200 (application/json;charset=UTF-8)
+
+        OK
+
+
+    + Headers
+
+            Vary:Origin
+            X-Content-Type-Options:nosniff
+            X-XSS-Protection:1; mode=block
+            Cache-Control:no-cache, no-store, max-age=0, must-revalidate
+            Pragma:no-cache
+            Expires:0
+            X-Frame-Options:DENY
+            Content-Length:192
+            Date:Wed, 24 Nov 2021 22:53:12 GMT
+            Keep-Alive:timeout=60
+            Connection:keep-alive
+
+    + Attributes (Get Stocks)
+
+
+    + Body
+
+            {
+              "path": "/api/stocks/",
+              "response_state": true,
+              "stocks": [
+                {
+                  "name": "Stock",
+                  "amount": {
+                    "currentPrice": "30.00"
+                  }
+                },
+                {
+                  "name": "Stock",
+                  "amount": {
+                    "currentPrice": "30.00"
+                  }
+                }
+              ],
+              "timestamp": "2021-11-24 23:53:12"
+            }
+
+
+### Create Stock [POST]
+
++ Request (application/json)
+
+    + Attributes (Create Stock Request)
+
+
+    + Body
+
+            {
+                "name": "Stock",
+                "amount": {
+                    "currentPrice": 30.0
+                }
+            }
+
+
++ Response 201 (application/json;charset=UTF-8)
+
+        Created
+
+
+    + Headers
+
+            Vary:Origin
+            X-Content-Type-Options:nosniff
+            X-XSS-Protection:1; mode=block
+            Cache-Control:no-cache, no-store, max-age=0, must-revalidate
+            Pragma:no-cache
+            Expires:0
+            X-Frame-Options:DENY
+            Content-Length:98
+            Date:Wed, 24 Nov 2021 22:42:19 GMT
+            Keep-Alive:timeout=60
+            Connection:keep-alive
+
+    + Attributes (Stock Created)
+
+
+    + Body
+
+            {
+              "path": "/api/stocks",
+              "response_state": true,
+              "message": "Created",
+              "timestamp": "2021-11-24 23:42:19"
+            }
+
+
++ Response 400 (application/json;charset=UTF-8)
+
+        Bad Request
+
+
+    + Headers
+
+            Vary:Origin
+            X-Content-Type-Options:nosniff
+            X-XSS-Protection:1; mode=block
+            Cache-Control:no-cache, no-store, max-age=0, must-revalidate
+            Pragma:no-cache
+            Expires:0
+            X-Frame-Options:DENY
+            Content-Length:205
+            Date:Wed, 24 Nov 2021 22:44:20 GMT
+            Connection:close
+
+    + Attributes (Validation Err1)
+
+
+    + Body
+
+            {
+              "path": "/api/stocks",
+              "response_state": false,
+              "message": "Validation failed",
+              "error": "Bad Request",
+              "errors": {
+                "amount": "Enter Amount",
+                "name": "Enter stock name"
+              },
+              "timestamp": "2021-11-24 23:44:20",
+              "status": 400
+            }
+
+
+
+## Stocks with path [/stocks/{stockId}]
+
+### Get Stock [GET]
++ Parameters
+    + stockId (number, required)
+
++ Response 404 (application/json)
+
+        Not Found
+
+
+    + Headers
+
+            Vary:Origin
+            X-Content-Type-Options:nosniff
+            X-XSS-Protection:1; mode=block
+            Cache-Control:no-cache, no-store, max-age=0, must-revalidate
+            Pragma:no-cache
+            Expires:0
+            X-Frame-Options:DENY
+            Transfer-Encoding:chunked
+            Date:Wed, 24 Nov 2021 22:40:36 GMT
+            Keep-Alive:timeout=60
+            Connection:keep-alive
+
+    + Attributes (Stock Not Found Err1)
+
+
+    + Body
+
+            {
+              "timestamp": "2021-11-24 23:40:20",
+              "status": 404,
+              "error": "Not Found",
+              "message": "Stock not found",
+              "path": "/api/stocks/1",
+              "response_state": false
+            }
+
+
++ Response 200 (application/json;charset=UTF-8)
+
+        OK
+
+
+    + Headers
+
+            Vary:Origin
+            X-Content-Type-Options:nosniff
+            X-XSS-Protection:1; mode=block
+            Cache-Control:no-cache, no-store, max-age=0, must-revalidate
+            Pragma:no-cache
+            Expires:0
+            X-Frame-Options:DENY
+            Content-Length:196
+            Date:Wed, 24 Nov 2021 22:44:47 GMT
+            Keep-Alive:timeout=60
+            Connection:keep-alive
+
+    + Attributes (Get Stock)
+
+
+    + Body
+
+            {
+              "path": "/api/stocks/1",
+              "response_state": true,
+              "message": {
+                "name": "Stock",
+                "amount": {
+                  "currentPrice": "30.00"
+                },
+                "stockId": "1",
+                "creationDate": "2021-11-24T11:43:44.931"
+              },
+              "timestamp": "2021-11-24 23:44:47"
+            }
+
+
+### Update Stock [PUT]
++ Parameters
+    + stockId (number, required)
+
++ Request (application/json)
+
+    + Attributes (Update Stock Request)
+
+
+    + Body
+
+            {
+                "name": "Stock",
+                "amount": {
+                    "currentPrice": 30.0
+                }
+            }
+
+
++ Response 404 (application/json)
+
+        Not Found
+
+
+    + Headers
+
+            Vary:Origin
+            X-Content-Type-Options:nosniff
+            X-XSS-Protection:1; mode=block
+            Cache-Control:no-cache, no-store, max-age=0, must-revalidate
+            Pragma:no-cache
+            Expires:0
+            X-Frame-Options:DENY
+            Transfer-Encoding:chunked
+            Date:Wed, 24 Nov 2021 22:41:42 GMT
+            Keep-Alive:timeout=60
+            Connection:keep-alive
+
+    + Attributes (Stock Not Found Err1)
+
+
+    + Body
+
+            {
+              "timestamp": "2021-11-24 23:40:20",
+              "status": 404,
+              "error": "Not Found",
+              "message": "Stock not found",
+              "path": "/api/stocks/1",
+              "response_state": false
+            }
+
+
++ Response 200 (application/json;charset=UTF-8)
+
+        OK
+
+
+    + Headers
+
+            Vary:Origin
+            X-Content-Type-Options:nosniff
+            X-XSS-Protection:1; mode=block
+            Cache-Control:no-cache, no-store, max-age=0, must-revalidate
+            Pragma:no-cache
+            Expires:0
+            X-Frame-Options:DENY
+            Content-Length:100
+            Date:Wed, 24 Nov 2021 22:43:49 GMT
+            Keep-Alive:timeout=60
+            Connection:keep-alive
+
+    + Attributes (Update Stock)
+
+
+    + Body
+
+            {
+              "path": "/api/stocks/1",
+              "response_state": true,
+              "message": "Updated",
+              "timestamp": "2021-11-24 23:43:49"
+            }
+
+
+### Delete Stock [DELETE]
++ Parameters
+    + stockId (number, required)
+
++ Response 200 (application/json;charset=UTF-8)
+
+        OK
+
+
+    + Headers
+
+            Vary:Origin
+            X-Content-Type-Options:nosniff
+            X-XSS-Protection:1; mode=block
+            Cache-Control:no-cache, no-store, max-age=0, must-revalidate
+            Pragma:no-cache
+            Expires:0
+            X-Frame-Options:DENY
+            Content-Length:100
+            Date:Wed, 24 Nov 2021 22:40:52 GMT
+            Keep-Alive:timeout=60
+            Connection:keep-alive
+
+    + Attributes (Delete Stock)
+
+
+    + Body
+
+            {
+              "path": "/api/stocks/1",
+              "response_state": true,
+              "message": "Deleted",
+              "timestamp": "2021-11-24 23:40:52"
+            }
+
+
++ Response 404 (application/json)
+
+        Not Found
+
+
+    + Headers
+
+            Vary:Origin
+            X-Content-Type-Options:nosniff
+            X-XSS-Protection:1; mode=block
+            Cache-Control:no-cache, no-store, max-age=0, must-revalidate
+            Pragma:no-cache
+            Expires:0
+            X-Frame-Options:DENY
+            Transfer-Encoding:chunked
+            Date:Wed, 24 Nov 2021 22:41:07 GMT
+            Keep-Alive:timeout=60
+            Connection:keep-alive
+
+    + Attributes (Stock Not Found Err1)
+
+
+    + Body
+
+            {
+              "timestamp": "2021-11-24 23:40:20",
+              "status": 404,
+              "error": "Not Found",
+              "message": "Stock not found",
+              "path": "/api/stocks/1",
+              "response_state": false
+            }
+
+
+
+
+# Data Structures
+
+## Get Stocks (object)
+
+
+### Properties
++ `path` (string, required) 
++ `response_state` (boolean, required) 
++ `stocks` (array[Stock], required) 
++ `timestamp` (string, required) 
+
+
+## Stock (object)
+
+
+### Properties
++ `name` (string, required) 
++ `amount` (Amount, required) 
+
+
+## Amount (object)
+
+
+### Properties
++ `currentPrice` (string, required) 
+
+
+## Stock Not Found Err1 (object)
+
+
+### Properties
++ `timestamp` (string, required) 
++ `status` (number, required) 
++ `error` (string, required) 
++ `message` (string, required) 
++ `path` (string, required) 
++ `response_state` (boolean, required) 
+
+
+## Get Stock (object)
+
+
+### Properties
++ `path` (string, required) 
++ `response_state` (boolean, required) 
++ `message` (Message, required) 
++ `timestamp` (string, required) 
+
+
+## Message (object)
+
+
+### Properties
++ `name` (string, required) 
++ `amount` (Amount, required) 
++ `stockId` (string, required) 
++ `creationDate` (string, required) 
+
+
+## Create Stock Request (object)
+
+
+### Properties
++ `name` (string, required) 
++ `amount` (Amount2, required) 
+
+
+## Amount2 (object)
+
+
+### Properties
++ `currentPrice` (number, required) 
+
+
+## Stock Created (object)
+
+
+### Properties
++ `path` (string, required) 
++ `response_state` (boolean, required) 
++ `message` (string, required) 
++ `timestamp` (string, required) 
+
+
+## Errors (object)
+
+
+### Properties
++ `amount` (string, required) 
++ `name` (string, required) 
+
+
+## Validation Err1 (object)
+
+
+### Properties
++ `path` (string, required) 
++ `response_state` (boolean, required) 
++ `message` (string, required) 
++ `error` (string, required) 
++ `errors` (Errors, required) 
++ `timestamp` (string, required) 
++ `status` (number, required) 
+
+
+## Update Stock Request (object)
+
+
+### Properties
++ `name` (string, required) 
++ `amount` (Amount2, required) 
+
+
+## Update Stock (object)
+
+
+### Properties
++ `path` (string, required) 
++ `response_state` (boolean, required) 
++ `message` (string, required) 
++ `timestamp` (string, required) 
+
+
+## Delete Stock (object)
+
+
+### Properties
++ `path` (string, required) 
++ `response_state` (boolean, required) 
++ `message` (string, required) 
++ `timestamp` (string, required) 
+

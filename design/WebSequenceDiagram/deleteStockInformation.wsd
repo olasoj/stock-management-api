@@ -1,0 +1,25 @@
+title Delete Stock Information
+
+actor User
+User->+Postman: Delete Stock
+
+Postman->+Stock Controller: Delete Stock
+Stock Controller->+StockService: Delete Stock
+StockService-->+StockRepository: Get Stock
+
+
+
+alt Stock Not Found
+    StockRepository-->StockService: Stock Not Found
+    StockService-->Stock Controller: Stock Not Found
+    Stock Controller -->-Postman: Stock Not Found
+
+else Delete Stock
+    StockRepository -->StockService: Retrieve Stock
+    StockService-->-StockRepository: Delete Stock Info
+    StockService-->+Stock Controller: response
+    Stock Controller -->-Postman: response
+    
+    
+end
+

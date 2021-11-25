@@ -1,0 +1,25 @@
+title Update Stock Information
+
+actor User
+User->+Postman: Update Stock
+
+Postman->+Stock Controller: Update Stock
+Stock Controller->+StockService: Update Stock
+StockService-->+StockRepository: Get Stock
+
+
+
+alt Stock Not Found
+    StockRepository-->StockService: Stock Not Found
+    StockService-->Stock Controller: Stock Not Found
+    Stock Controller -->-Postman: Stock Not Found
+
+else Update Stock Info
+    StockRepository -->StockService: Retrieve Stock
+    StockService-->StockService: Update Stock Info
+    StockService-->+Stock Controller: response
+    Stock Controller -->-Postman: response
+    
+    
+end
+

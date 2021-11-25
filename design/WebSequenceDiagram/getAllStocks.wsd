@@ -1,0 +1,11 @@
+title Get All Stocks
+
+actor User
+User->+Postman: Get All Stocks
+
+Postman->+Stock Controller: Get All Stocks
+Stock Controller->+StockService: Get All Stocks
+StockService-->+StockRepository: Get All Stocks
+StockRepository-->- StockService: Stocks
+StockService-->-Stock Controller: Stocks
+Stock Controller -->-Postman: Stocks
