@@ -24,8 +24,8 @@ HOST: http://localhost:8080/api
             Pragma:no-cache
             Expires:0
             X-Frame-Options:DENY
-            Content-Length:192
-            Date:Wed, 24 Nov 2021 22:53:12 GMT
+            Content-Length:152
+            Date:Sat, 27 Nov 2021 12:37:47 GMT
             Keep-Alive:timeout=60
             Connection:keep-alive
 
@@ -36,22 +36,17 @@ HOST: http://localhost:8080/api
 
             {
               "path": "/api/stocks/",
+              "timestamp": "2021-11-27 13:37:47",
               "response_state": true,
-              "stocks": [
-                {
-                  "name": "Stock",
-                  "amount": {
-                    "currentPrice": "30.00"
-                  }
-                },
+              "status": 200,
+              "data": [
                 {
                   "name": "Stock",
                   "amount": {
                     "currentPrice": "30.00"
                   }
                 }
-              ],
-              "timestamp": "2021-11-24 23:53:12"
+              ]
             }
 
 
@@ -72,38 +67,6 @@ HOST: http://localhost:8080/api
             }
 
 
-+ Response 201 (application/json;charset=UTF-8)
-
-        Created
-
-
-    + Headers
-
-            Vary:Origin
-            X-Content-Type-Options:nosniff
-            X-XSS-Protection:1; mode=block
-            Cache-Control:no-cache, no-store, max-age=0, must-revalidate
-            Pragma:no-cache
-            Expires:0
-            X-Frame-Options:DENY
-            Content-Length:98
-            Date:Wed, 24 Nov 2021 22:42:19 GMT
-            Keep-Alive:timeout=60
-            Connection:keep-alive
-
-    + Attributes (Stock Created)
-
-
-    + Body
-
-            {
-              "path": "/api/stocks",
-              "response_state": true,
-              "message": "Created",
-              "timestamp": "2021-11-24 23:42:19"
-            }
-
-
 + Response 400 (application/json;charset=UTF-8)
 
         Bad Request
@@ -118,8 +81,8 @@ HOST: http://localhost:8080/api
             Pragma:no-cache
             Expires:0
             X-Frame-Options:DENY
-            Content-Length:205
-            Date:Wed, 24 Nov 2021 22:44:20 GMT
+            Content-Length:190
+            Date:Sat, 27 Nov 2021 12:33:20 GMT
             Connection:close
 
     + Attributes (Validation Err1)
@@ -129,26 +92,61 @@ HOST: http://localhost:8080/api
 
             {
               "path": "/api/stocks",
+              "timestamp": "2021-11-27 13:33:20",
               "response_state": false,
-              "message": "Validation failed",
-              "error": "Bad Request",
-              "errors": {
-                "amount": "Enter Amount",
-                "name": "Enter stock name"
-              },
-              "timestamp": "2021-11-24 23:44:20",
-              "status": 400
+              "status": 400,
+              "data": {
+                "message": "Validation failed",
+                "error": "Bad Request",
+                "errors": {
+                  "name": "Enter stock name"
+                }
+              }
+            }
+
+
++ Response 201 (application/json;charset=UTF-8)
+
+        Created
+
+
+    + Headers
+
+            Vary:Origin
+            X-Content-Type-Options:nosniff
+            X-XSS-Protection:1; mode=block
+            Cache-Control:no-cache, no-store, max-age=0, must-revalidate
+            Pragma:no-cache
+            Expires:0
+            X-Frame-Options:DENY
+            Content-Length:108
+            Date:Sat, 27 Nov 2021 12:33:59 GMT
+            Keep-Alive:timeout=60
+            Connection:keep-alive
+
+    + Attributes (Create Stock)
+
+
+    + Body
+
+            {
+              "path": "/api/stocks",
+              "timestamp": "2021-11-27 13:33:59",
+              "response_state": true,
+              "status": 201,
+              "data": "Created"
             }
 
 
 
-## Stocks with path [/stocks/{stockId}]
+### Get Stock [GET /{stockId}]
 
-### Get Stock [GET]
 + Parameters
     + stockId (number, required)
 
-+ Response 404 (application/json)
+        + Sample: 1
+
++ Response 404 (application/json;charset=UTF-8)
 
         Not Found
 
@@ -162,8 +160,8 @@ HOST: http://localhost:8080/api
             Pragma:no-cache
             Expires:0
             X-Frame-Options:DENY
-            Transfer-Encoding:chunked
-            Date:Wed, 24 Nov 2021 22:40:36 GMT
+            Content-Length:151
+            Date:Sat, 27 Nov 2021 11:43:20 GMT
             Keep-Alive:timeout=60
             Connection:keep-alive
 
@@ -173,12 +171,14 @@ HOST: http://localhost:8080/api
     + Body
 
             {
-              "timestamp": "2021-11-24 23:40:20",
-              "status": 404,
-              "error": "Not Found",
-              "message": "Stock not found",
               "path": "/api/stocks/1",
-              "response_state": false
+              "timestamp": "2021-11-27 12:43:20",
+              "response_state": false,
+              "status": 404,
+              "data": {
+                "message": "Stock not found",
+                "error": "Not Found"
+              }
             }
 
 
@@ -196,8 +196,8 @@ HOST: http://localhost:8080/api
             Pragma:no-cache
             Expires:0
             X-Frame-Options:DENY
-            Content-Length:196
-            Date:Wed, 24 Nov 2021 22:44:47 GMT
+            Content-Length:204
+            Date:Sat, 27 Nov 2021 12:36:20 GMT
             Keep-Alive:timeout=60
             Connection:keep-alive
 
@@ -208,22 +208,26 @@ HOST: http://localhost:8080/api
 
             {
               "path": "/api/stocks/1",
+              "timestamp": "2021-11-27 13:36:20",
               "response_state": true,
-              "message": {
+              "status": 200,
+              "data": {
                 "name": "Stock",
                 "amount": {
                   "currentPrice": "30.00"
                 },
-                "stockId": "1",
-                "creationDate": "2021-11-24T11:43:44.931"
-              },
-              "timestamp": "2021-11-24 23:44:47"
+                "stockId": 1,
+                "creationDate": "2021-11-27T01:33:59.181"
+              }
             }
 
 
-### Update Stock [PUT]
+### Update Stock [PUT /{stockId}]
+
 + Parameters
     + stockId (number, required)
+
+        + Sample: 1
 
 + Request (application/json)
 
@@ -240,40 +244,6 @@ HOST: http://localhost:8080/api
             }
 
 
-+ Response 404 (application/json)
-
-        Not Found
-
-
-    + Headers
-
-            Vary:Origin
-            X-Content-Type-Options:nosniff
-            X-XSS-Protection:1; mode=block
-            Cache-Control:no-cache, no-store, max-age=0, must-revalidate
-            Pragma:no-cache
-            Expires:0
-            X-Frame-Options:DENY
-            Transfer-Encoding:chunked
-            Date:Wed, 24 Nov 2021 22:41:42 GMT
-            Keep-Alive:timeout=60
-            Connection:keep-alive
-
-    + Attributes (Stock Not Found Err1)
-
-
-    + Body
-
-            {
-              "timestamp": "2021-11-24 23:40:20",
-              "status": 404,
-              "error": "Not Found",
-              "message": "Stock not found",
-              "path": "/api/stocks/1",
-              "response_state": false
-            }
-
-
 + Response 200 (application/json;charset=UTF-8)
 
         OK
@@ -288,8 +258,8 @@ HOST: http://localhost:8080/api
             Pragma:no-cache
             Expires:0
             X-Frame-Options:DENY
-            Content-Length:100
-            Date:Wed, 24 Nov 2021 22:43:49 GMT
+            Content-Length:110
+            Date:Sat, 27 Nov 2021 12:36:48 GMT
             Keep-Alive:timeout=60
             Connection:keep-alive
 
@@ -300,15 +270,55 @@ HOST: http://localhost:8080/api
 
             {
               "path": "/api/stocks/1",
+              "timestamp": "2021-11-27 13:36:48",
               "response_state": true,
-              "message": "Updated",
-              "timestamp": "2021-11-24 23:43:49"
+              "status": 200,
+              "data": "Updated"
             }
 
 
-### Delete Stock [DELETE]
++ Response 404 (application/json;charset=UTF-8)
+
+        Not Found
+
+
+    + Headers
+
+            Vary:Origin
+            X-Content-Type-Options:nosniff
+            X-XSS-Protection:1; mode=block
+            Cache-Control:no-cache, no-store, max-age=0, must-revalidate
+            Pragma:no-cache
+            Expires:0
+            X-Frame-Options:DENY
+            Content-Length:151
+            Date:Sat, 27 Nov 2021 12:37:25 GMT
+            Keep-Alive:timeout=60
+            Connection:keep-alive
+
+    + Attributes (Stock Not Found Err1)
+
+
+    + Body
+
+            {
+              "path": "/api/stocks/2",
+              "timestamp": "2021-11-27 13:37:25",
+              "response_state": false,
+              "status": 404,
+              "data": {
+                "message": "Stock not found",
+                "error": "Not Found"
+              }
+            }
+
+
+### Delete Stock [DELETE/{stockId}]
+
 + Parameters
     + stockId (number, required)
+
+        + Sample: 1
 
 + Response 200 (application/json;charset=UTF-8)
 
@@ -324,8 +334,8 @@ HOST: http://localhost:8080/api
             Pragma:no-cache
             Expires:0
             X-Frame-Options:DENY
-            Content-Length:100
-            Date:Wed, 24 Nov 2021 22:40:52 GMT
+            Content-Length:110
+            Date:Sat, 27 Nov 2021 12:38:11 GMT
             Keep-Alive:timeout=60
             Connection:keep-alive
 
@@ -336,13 +346,14 @@ HOST: http://localhost:8080/api
 
             {
               "path": "/api/stocks/1",
+              "timestamp": "2021-11-27 13:38:11",
               "response_state": true,
-              "message": "Deleted",
-              "timestamp": "2021-11-24 23:40:52"
+              "status": 200,
+              "data": "Deleted"
             }
 
 
-+ Response 404 (application/json)
++ Response 404 (application/json;charset=UTF-8)
 
         Not Found
 
@@ -356,8 +367,8 @@ HOST: http://localhost:8080/api
             Pragma:no-cache
             Expires:0
             X-Frame-Options:DENY
-            Transfer-Encoding:chunked
-            Date:Wed, 24 Nov 2021 22:41:07 GMT
+            Content-Length:151
+            Date:Sat, 27 Nov 2021 12:38:35 GMT
             Keep-Alive:timeout=60
             Connection:keep-alive
 
@@ -367,12 +378,14 @@ HOST: http://localhost:8080/api
     + Body
 
             {
-              "timestamp": "2021-11-24 23:40:20",
-              "status": 404,
-              "error": "Not Found",
-              "message": "Stock not found",
               "path": "/api/stocks/1",
-              "response_state": false
+              "timestamp": "2021-11-27 13:38:35",
+              "response_state": false,
+              "status": 404,
+              "data": {
+                "message": "Stock not found",
+                "error": "Not Found"
+              }
             }
 
 
@@ -385,12 +398,13 @@ HOST: http://localhost:8080/api
 
 ### Properties
 + `path` (string, required) 
-+ `response_state` (boolean, required) 
-+ `stocks` (array[Stock], required) 
 + `timestamp` (string, required) 
++ `response_state` (boolean, required) 
++ `status` (number, required) 
++ `data` (array[Datum], required) 
 
 
-## Stock (object)
+## Datum (object)
 
 
 ### Properties
@@ -405,16 +419,23 @@ HOST: http://localhost:8080/api
 + `currentPrice` (string, required) 
 
 
+## Data (object)
+
+
+### Properties
++ `message` (string, required) 
++ `error` (string, required) 
+
+
 ## Stock Not Found Err1 (object)
 
 
 ### Properties
-+ `timestamp` (string, required) 
-+ `status` (number, required) 
-+ `error` (string, required) 
-+ `message` (string, required) 
 + `path` (string, required) 
++ `timestamp` (string, required) 
 + `response_state` (boolean, required) 
++ `status` (number, required) 
++ `data` (Data, required) 
 
 
 ## Get Stock (object)
@@ -422,18 +443,19 @@ HOST: http://localhost:8080/api
 
 ### Properties
 + `path` (string, required) 
-+ `response_state` (boolean, required) 
-+ `message` (Message, required) 
 + `timestamp` (string, required) 
++ `response_state` (boolean, required) 
++ `status` (number, required) 
++ `data` (Data2, required) 
 
 
-## Message (object)
+## Data2 (object)
 
 
 ### Properties
 + `name` (string, required) 
 + `amount` (Amount, required) 
-+ `stockId` (string, required) 
++ `stockId` (number, required) 
 + `creationDate` (string, required) 
 
 
@@ -452,21 +474,19 @@ HOST: http://localhost:8080/api
 + `currentPrice` (number, required) 
 
 
-## Stock Created (object)
+## Data3 (object)
 
 
 ### Properties
-+ `path` (string, required) 
-+ `response_state` (boolean, required) 
 + `message` (string, required) 
-+ `timestamp` (string, required) 
++ `error` (string, required) 
++ `errors` (Errors, required) 
 
 
 ## Errors (object)
 
 
 ### Properties
-+ `amount` (string, required) 
 + `name` (string, required) 
 
 
@@ -475,12 +495,21 @@ HOST: http://localhost:8080/api
 
 ### Properties
 + `path` (string, required) 
-+ `response_state` (boolean, required) 
-+ `message` (string, required) 
-+ `error` (string, required) 
-+ `errors` (Errors, required) 
 + `timestamp` (string, required) 
++ `response_state` (boolean, required) 
 + `status` (number, required) 
++ `data` (Data3, required) 
+
+
+## Create Stock (object)
+
+
+### Properties
++ `path` (string, required) 
++ `timestamp` (string, required) 
++ `response_state` (boolean, required) 
++ `status` (number, required) 
++ `data` (string, required) 
 
 
 ## Update Stock Request (object)
@@ -496,9 +525,10 @@ HOST: http://localhost:8080/api
 
 ### Properties
 + `path` (string, required) 
-+ `response_state` (boolean, required) 
-+ `message` (string, required) 
 + `timestamp` (string, required) 
++ `response_state` (boolean, required) 
++ `status` (number, required) 
++ `data` (string, required) 
 
 
 ## Delete Stock (object)
@@ -506,7 +536,8 @@ HOST: http://localhost:8080/api
 
 ### Properties
 + `path` (string, required) 
-+ `response_state` (boolean, required) 
-+ `message` (string, required) 
 + `timestamp` (string, required) 
++ `response_state` (boolean, required) 
++ `status` (number, required) 
++ `data` (string, required) 
 

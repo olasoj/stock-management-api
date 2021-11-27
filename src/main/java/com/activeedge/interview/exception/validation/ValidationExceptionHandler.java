@@ -29,8 +29,8 @@ public class ValidationExceptionHandler {
         ResponseModel.responseValidationError(request, response, errors, "Validation failed", HttpStatus.BAD_REQUEST);
     }
 
-    private Map<Object, Object> getErrors(MethodArgumentNotValidException ex) {
-        var errors = new HashMap<>();
+    private Map<String, Object> getErrors(MethodArgumentNotValidException ex) {
+        var errors = new HashMap<String, Object>();
         ex.getBindingResult().getFieldErrors().forEach(error -> errors.put(error.getField(), error.getDefaultMessage()));
         return errors;
     }

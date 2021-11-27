@@ -20,33 +20,33 @@ public class StockController {
 
     @GetMapping(path = "")
     public void getAllStocks(HttpServletRequest request, HttpServletResponse response) {
-        ResponseModel.responseSuccess(request, response, HttpStatus.OK, "stocks",
+        ResponseModel.responseWriter(request, response, HttpStatus.OK,
                 stockService.getAllStocks());
     }
 
     @PostMapping(path = "")
     public void createStock(@Valid @RequestBody CreateStockRequest createStockRequest,
                             HttpServletRequest request, HttpServletResponse response) {
-        ResponseModel.responseSuccess(request, response, HttpStatus.CREATED, MESSAGE,
+        ResponseModel.responseWriter(request, response, HttpStatus.CREATED,
                 stockService.createStock(createStockRequest));
     }
 
     @GetMapping(path = "/{stockId}")
     public void getStock(@PathVariable(value = "stockId") Long stockId, HttpServletRequest request, HttpServletResponse response) {
-        ResponseModel.responseSuccess(request, response, HttpStatus.OK, MESSAGE,
+        ResponseModel.responseWriter(request, response, HttpStatus.OK,
                 stockService.getStock(stockId));
     }
 
     @PutMapping(value = "/{stockId}")
     public void updateStock(@Valid @RequestBody UpdateStockRequest updateStockRequest, @PathVariable(value = "stockId") Long stockId,
                             HttpServletRequest request, HttpServletResponse response) {
-        ResponseModel.responseSuccess(request, response, HttpStatus.OK, MESSAGE,
+        ResponseModel.responseWriter(request, response, HttpStatus.OK,
                 stockService.updateStock(stockId, updateStockRequest));
     }
 
     @DeleteMapping(value = "/{stockId}")
     public void deleteStock(@PathVariable(value = "stockId") Long stockId, HttpServletRequest request, HttpServletResponse response) {
-        ResponseModel.responseSuccess(request, response, HttpStatus.OK, MESSAGE,
+        ResponseModel.responseWriter(request, response, HttpStatus.OK,
                 stockService.deleteStock(stockId));
     }
 }

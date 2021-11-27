@@ -74,15 +74,15 @@ paths:
                 text/plain:
                   schema:
                     type: string
-                    example: '192'
-                  example: '192'
+                    example: '152'
+                  example: '152'
             Date:
               content:
                 text/plain:
                   schema:
                     type: string
-                    example: Wed, 24 Nov 2021 22:53:12 GMT
-                  example: Wed, 24 Nov 2021 22:53:12 GMT
+                    example: Sat, 27 Nov 2021 12:37:47 GMT
+                  example: Sat, 27 Nov 2021 12:37:47 GMT
             Keep-Alive:
               content:
                 text/plain:
@@ -103,15 +103,13 @@ paths:
                 $ref: '#/components/schemas/GetStocks'
               example:
                 path: /api/stocks/
+                timestamp: 2021-11-27 13:37:47
                 response_state: true
-                stocks:
+                status: 200
+                data:
                 - name: Stock
                   amount:
                     currentPrice: '30.00'
-                - name: Stock
-                  amount:
-                    currentPrice: '30.00'
-                timestamp: 2021-11-24 23:53:12
       deprecated: false
     post:
       tags:
@@ -132,95 +130,6 @@ paths:
                 currentPrice: 30
         required: true
       responses:
-        '201':
-          description: Created
-          headers:
-            Vary:
-              content:
-                text/plain:
-                  schema:
-                    type: string
-                    example: Origin
-                  example: Origin
-            X-Content-Type-Options:
-              content:
-                text/plain:
-                  schema:
-                    type: string
-                    example: nosniff
-                  example: nosniff
-            X-XSS-Protection:
-              content:
-                text/plain:
-                  schema:
-                    type: string
-                    example: 1; mode=block
-                  example: 1; mode=block
-            Cache-Control:
-              content:
-                text/plain:
-                  schema:
-                    type: string
-                    example: no-cache, no-store, max-age=0, must-revalidate
-                  example: no-cache, no-store, max-age=0, must-revalidate
-            Pragma:
-              content:
-                text/plain:
-                  schema:
-                    type: string
-                    example: no-cache
-                  example: no-cache
-            Expires:
-              content:
-                text/plain:
-                  schema:
-                    type: string
-                    example: '0'
-                  example: '0'
-            X-Frame-Options:
-              content:
-                text/plain:
-                  schema:
-                    type: string
-                    example: DENY
-                  example: DENY
-            Content-Length:
-              content:
-                text/plain:
-                  schema:
-                    type: string
-                    example: '98'
-                  example: '98'
-            Date:
-              content:
-                text/plain:
-                  schema:
-                    type: string
-                    example: Wed, 24 Nov 2021 22:42:19 GMT
-                  example: Wed, 24 Nov 2021 22:42:19 GMT
-            Keep-Alive:
-              content:
-                text/plain:
-                  schema:
-                    type: string
-                    example: timeout=60
-                  example: timeout=60
-            Connection:
-              content:
-                text/plain:
-                  schema:
-                    type: string
-                    example: keep-alive
-                  example: keep-alive
-          content:
-            application/json;charset=UTF-8:
-              schema:
-                $ref: '#/components/schemas/StockCreated'
-              example:
-                path: /api/stocks
-                response_state: true
-                message: Created
-                timestamp: 2021-11-24 23:42:19
         '400':
           description: Bad Request
           headers:
@@ -278,15 +187,15 @@ paths:
                 text/plain:
                   schema:
                     type: string
-                    example: '205'
-                  example: '205'
+                    example: '190'
+                  example: '190'
             Date:
               content:
                 text/plain:
                   schema:
                     type: string
-                    example: Wed, 24 Nov 2021 22:44:20 GMT
-                  example: Wed, 24 Nov 2021 22:44:20 GMT
+                    example: Sat, 27 Nov 2021 12:33:20 GMT
+                  example: Sat, 27 Nov 2021 12:33:20 GMT
             Connection:
               content:
                 text/plain:
@@ -300,16 +209,106 @@ paths:
                 $ref: '#/components/schemas/ValidationErr1'
               example:
                 path: /api/stocks
+                timestamp: 2021-11-27 13:33:20
                 response_state: false
-                message: Validation failed
-                error: Bad Request
-                errors:
-                  amount: Enter Amount
-                  name: Enter stock name
-                timestamp: 2021-11-24 23:44:20
                 status: 400
+                data:
+                  message: Validation failed
+                  error: Bad Request
+                  errors:
+                    name: Enter stock name
+        '201':
+          description: Created
+          headers:
+            Vary:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                    example: Origin
+                  example: Origin
+            X-Content-Type-Options:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                    example: nosniff
+                  example: nosniff
+            X-XSS-Protection:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                    example: 1; mode=block
+                  example: 1; mode=block
+            Cache-Control:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                    example: no-cache, no-store, max-age=0, must-revalidate
+                  example: no-cache, no-store, max-age=0, must-revalidate
+            Pragma:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                    example: no-cache
+                  example: no-cache
+            Expires:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                    example: '0'
+                  example: '0'
+            X-Frame-Options:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                    example: DENY
+                  example: DENY
+            Content-Length:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                    example: '108'
+                  example: '108'
+            Date:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                    example: Sat, 27 Nov 2021 12:33:59 GMT
+                  example: Sat, 27 Nov 2021 12:33:59 GMT
+            Keep-Alive:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                    example: timeout=60
+                  example: timeout=60
+            Connection:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                    example: keep-alive
+                  example: keep-alive
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/CreateStock'
+              example:
+                path: /api/stocks
+                timestamp: 2021-11-27 13:33:59
+                response_state: true
+                status: 201
+                data: Created
       deprecated: false
-  /stocks/{stockId}:
+  /{stockId}:
     get:
       tags:
       - Misc
@@ -325,6 +324,7 @@ paths:
         schema:
           type: number
           format: double
+          example: 1
       responses:
         '404':
           description: Not Found
@@ -378,20 +378,20 @@ paths:
                     type: string
                     example: DENY
                   example: DENY
-            Transfer-Encoding:
+            Content-Length:
               content:
                 text/plain:
                   schema:
                     type: string
-                    example: chunked
-                  example: chunked
+                    example: '151'
+                  example: '151'
             Date:
               content:
                 text/plain:
                   schema:
                     type: string
-                    example: Wed, 24 Nov 2021 22:40:36 GMT
-                  example: Wed, 24 Nov 2021 22:40:36 GMT
+                    example: Sat, 27 Nov 2021 11:43:20 GMT
+                  example: Sat, 27 Nov 2021 11:43:20 GMT
             Keep-Alive:
               content:
                 text/plain:
@@ -407,16 +407,17 @@ paths:
                     example: keep-alive
                   example: keep-alive
           content:
-            application/json:
+            application/json;charset=UTF-8:
               schema:
                 $ref: '#/components/schemas/StockNotFoundErr1'
               example:
-                timestamp: 2021-11-24 23:40:20
-                status: 404
-                error: Not Found
-                message: Stock not found
                 path: /api/stocks/1
+                timestamp: 2021-11-27 12:43:20
                 response_state: false
+                status: 404
+                data:
+                  message: Stock not found
+                  error: Not Found
         '200':
           description: OK
           headers:
@@ -474,15 +475,15 @@ paths:
                 text/plain:
                   schema:
                     type: string
-                    example: '196'
-                  example: '196'
+                    example: '204'
+                  example: '204'
             Date:
               content:
                 text/plain:
                   schema:
                     type: string
-                    example: Wed, 24 Nov 2021 22:44:47 GMT
-                  example: Wed, 24 Nov 2021 22:44:47 GMT
+                    example: Sat, 27 Nov 2021 12:36:20 GMT
+                  example: Sat, 27 Nov 2021 12:36:20 GMT
             Keep-Alive:
               content:
                 text/plain:
@@ -503,14 +504,15 @@ paths:
                 $ref: '#/components/schemas/GetStock'
               example:
                 path: /api/stocks/1
+                timestamp: 2021-11-27 13:36:20
                 response_state: true
-                message:
+                status: 200
+                data:
                   name: Stock
                   amount:
                     currentPrice: '30.00'
-                  stockId: '1'
-                  creationDate: 2021-11-24T11:43:44.931
-                timestamp: 2021-11-24 23:44:47
+                  stockId: 1
+                  creationDate: 2021-11-27T01:33:59.181
       deprecated: false
     put:
       tags:
@@ -527,6 +529,7 @@ paths:
         schema:
           type: number
           format: double
+          example: 1
       requestBody:
         description: ''
         content:
@@ -539,97 +542,6 @@ paths:
                 currentPrice: 30
         required: true
       responses:
-        '404':
-          description: Not Found
-          headers:
-            Vary:
-              content:
-                text/plain:
-                  schema:
-                    type: string
-                    example: Origin
-                  example: Origin
-            X-Content-Type-Options:
-              content:
-                text/plain:
-                  schema:
-                    type: string
-                    example: nosniff
-                  example: nosniff
-            X-XSS-Protection:
-              content:
-                text/plain:
-                  schema:
-                    type: string
-                    example: 1; mode=block
-                  example: 1; mode=block
-            Cache-Control:
-              content:
-                text/plain:
-                  schema:
-                    type: string
-                    example: no-cache, no-store, max-age=0, must-revalidate
-                  example: no-cache, no-store, max-age=0, must-revalidate
-            Pragma:
-              content:
-                text/plain:
-                  schema:
-                    type: string
-                    example: no-cache
-                  example: no-cache
-            Expires:
-              content:
-                text/plain:
-                  schema:
-                    type: string
-                    example: '0'
-                  example: '0'
-            X-Frame-Options:
-              content:
-                text/plain:
-                  schema:
-                    type: string
-                    example: DENY
-                  example: DENY
-            Transfer-Encoding:
-              content:
-                text/plain:
-                  schema:
-                    type: string
-                    example: chunked
-                  example: chunked
-            Date:
-              content:
-                text/plain:
-                  schema:
-                    type: string
-                    example: Wed, 24 Nov 2021 22:41:42 GMT
-                  example: Wed, 24 Nov 2021 22:41:42 GMT
-            Keep-Alive:
-              content:
-                text/plain:
-                  schema:
-                    type: string
-                    example: timeout=60
-                  example: timeout=60
-            Connection:
-              content:
-                text/plain:
-                  schema:
-                    type: string
-                    example: keep-alive
-                  example: keep-alive
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/StockNotFoundErr1'
-              example:
-                timestamp: 2021-11-24 23:40:20
-                status: 404
-                error: Not Found
-                message: Stock not found
-                path: /api/stocks/1
-                response_state: false
         '200':
           description: OK
           headers:
@@ -687,15 +599,15 @@ paths:
                 text/plain:
                   schema:
                     type: string
-                    example: '100'
-                  example: '100'
+                    example: '110'
+                  example: '110'
             Date:
               content:
                 text/plain:
                   schema:
                     type: string
-                    example: Wed, 24 Nov 2021 22:43:49 GMT
-                  example: Wed, 24 Nov 2021 22:43:49 GMT
+                    example: Sat, 27 Nov 2021 12:36:48 GMT
+                  example: Sat, 27 Nov 2021 12:36:48 GMT
             Keep-Alive:
               content:
                 text/plain:
@@ -716,9 +628,102 @@ paths:
                 $ref: '#/components/schemas/UpdateStock'
               example:
                 path: /api/stocks/1
+                timestamp: 2021-11-27 13:36:48
                 response_state: true
-                message: Updated
-                timestamp: 2021-11-24 23:43:49
+                status: 200
+                data: Updated
+        '404':
+          description: Not Found
+          headers:
+            Vary:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                    example: Origin
+                  example: Origin
+            X-Content-Type-Options:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                    example: nosniff
+                  example: nosniff
+            X-XSS-Protection:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                    example: 1; mode=block
+                  example: 1; mode=block
+            Cache-Control:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                    example: no-cache, no-store, max-age=0, must-revalidate
+                  example: no-cache, no-store, max-age=0, must-revalidate
+            Pragma:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                    example: no-cache
+                  example: no-cache
+            Expires:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                    example: '0'
+                  example: '0'
+            X-Frame-Options:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                    example: DENY
+                  example: DENY
+            Content-Length:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                    example: '151'
+                  example: '151'
+            Date:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                    example: Sat, 27 Nov 2021 12:37:25 GMT
+                  example: Sat, 27 Nov 2021 12:37:25 GMT
+            Keep-Alive:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                    example: timeout=60
+                  example: timeout=60
+            Connection:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                    example: keep-alive
+                  example: keep-alive
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/StockNotFoundErr1'
+              example:
+                path: /api/stocks/2
+                timestamp: 2021-11-27 13:37:25
+                response_state: false
+                status: 404
+                data:
+                  message: Stock not found
+                  error: Not Found
       deprecated: false
     delete:
       tags:
@@ -735,6 +740,7 @@ paths:
         schema:
           type: number
           format: double
+          example: 1
       responses:
         '200':
           description: OK
@@ -793,15 +799,15 @@ paths:
                 text/plain:
                   schema:
                     type: string
-                    example: '100'
-                  example: '100'
+                    example: '110'
+                  example: '110'
             Date:
               content:
                 text/plain:
                   schema:
                     type: string
-                    example: Wed, 24 Nov 2021 22:40:52 GMT
-                  example: Wed, 24 Nov 2021 22:40:52 GMT
+                    example: Sat, 27 Nov 2021 12:38:11 GMT
+                  example: Sat, 27 Nov 2021 12:38:11 GMT
             Keep-Alive:
               content:
                 text/plain:
@@ -822,9 +828,10 @@ paths:
                 $ref: '#/components/schemas/DeleteStock'
               example:
                 path: /api/stocks/1
+                timestamp: 2021-11-27 13:38:11
                 response_state: true
-                message: Deleted
-                timestamp: 2021-11-24 23:40:52
+                status: 200
+                data: Deleted
         '404':
           description: Not Found
           headers:
@@ -877,20 +884,20 @@ paths:
                     type: string
                     example: DENY
                   example: DENY
-            Transfer-Encoding:
+            Content-Length:
               content:
                 text/plain:
                   schema:
                     type: string
-                    example: chunked
-                  example: chunked
+                    example: '151'
+                  example: '151'
             Date:
               content:
                 text/plain:
                   schema:
                     type: string
-                    example: Wed, 24 Nov 2021 22:41:07 GMT
-                  example: Wed, 24 Nov 2021 22:41:07 GMT
+                    example: Sat, 27 Nov 2021 12:38:35 GMT
+                  example: Sat, 27 Nov 2021 12:38:35 GMT
             Keep-Alive:
               content:
                 text/plain:
@@ -906,16 +913,17 @@ paths:
                     example: keep-alive
                   example: keep-alive
           content:
-            application/json:
+            application/json;charset=UTF-8:
               schema:
                 $ref: '#/components/schemas/StockNotFoundErr1'
               example:
-                timestamp: 2021-11-24 23:40:20
-                status: 404
-                error: Not Found
-                message: Stock not found
                 path: /api/stocks/1
+                timestamp: 2021-11-27 13:38:35
                 response_state: false
+                status: 404
+                data:
+                  message: Stock not found
+                  error: Not Found
       deprecated: false
 components:
   schemas:
@@ -923,24 +931,27 @@ components:
       title: GetStocks
       required:
       - path
-      - response_state
-      - stocks
       - timestamp
+      - response_state
+      - status
+      - data
       type: object
       properties:
         path:
           type: string
-        response_state:
-          type: boolean
-        stocks:
-          type: array
-          items:
-            $ref: '#/components/schemas/Stock'
-          description: ''
         timestamp:
           type: string
-    Stock:
-      title: Stock
+        response_state:
+          type: boolean
+        status:
+          type: number
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Datum'
+          description: ''
+    Datum:
+      title: Datum
       required:
       - name
       - amount
@@ -958,48 +969,59 @@ components:
       properties:
         currentPrice:
           type: string
+    Data:
+      title: Data
+      required:
+      - message
+      - error
+      type: object
+      properties:
+        message:
+          type: string
+        error:
+          type: string
     StockNotFoundErr1:
       title: StockNotFoundErr1
       required:
-      - timestamp
-      - status
-      - error
-      - message
       - path
+      - timestamp
       - response_state
+      - status
+      - data
       type: object
       properties:
-        timestamp:
-          type: string
-        status:
-          type: number
-        error:
-          type: string
-        message:
-          type: string
         path:
+          type: string
+        timestamp:
           type: string
         response_state:
           type: boolean
+        status:
+          type: number
+        data:
+          $ref: '#/components/schemas/Data'
     GetStock:
       title: GetStock
       required:
       - path
-      - response_state
-      - message
       - timestamp
+      - response_state
+      - status
+      - data
       type: object
       properties:
         path:
           type: string
-        response_state:
-          type: boolean
-        message:
-          $ref: '#/components/schemas/Message'
         timestamp:
           type: string
-    Message:
-      title: Message
+        response_state:
+          type: boolean
+        status:
+          type: number
+        data:
+          $ref: '#/components/schemas/Data2'
+    Data2:
+      title: Data2
       required:
       - name
       - amount
@@ -1012,7 +1034,7 @@ components:
         amount:
           $ref: '#/components/schemas/Amount'
         stockId:
-          type: string
+          type: number
         creationDate:
           type: string
     CreateStockRequest:
@@ -1034,60 +1056,68 @@ components:
       properties:
         currentPrice:
           type: number
-    StockCreated:
-      title: StockCreated
+    Data3:
+      title: Data3
       required:
-      - path
-      - response_state
-      - message
-      - timestamp
-      type: object
-      properties:
-        path:
-          type: string
-        response_state:
-          type: boolean
-        message:
-          type: string
-        timestamp:
-          type: string
-    Errors:
-      title: Errors
-      required:
-      - amount
-      - name
-      type: object
-      properties:
-        amount:
-          type: string
-        name:
-          type: string
-    ValidationErr1:
-      title: ValidationErr1
-      required:
-      - path
-      - response_state
       - message
       - error
       - errors
-      - timestamp
-      - status
       type: object
       properties:
-        path:
-          type: string
-        response_state:
-          type: boolean
         message:
           type: string
         error:
           type: string
         errors:
           $ref: '#/components/schemas/Errors'
+    Errors:
+      title: Errors
+      required:
+      - name
+      type: object
+      properties:
+        name:
+          type: string
+    ValidationErr1:
+      title: ValidationErr1
+      required:
+      - path
+      - timestamp
+      - response_state
+      - status
+      - data
+      type: object
+      properties:
+        path:
+          type: string
         timestamp:
           type: string
+        response_state:
+          type: boolean
         status:
           type: number
+        data:
+          $ref: '#/components/schemas/Data3'
+    CreateStock:
+      title: CreateStock
+      required:
+      - path
+      - timestamp
+      - response_state
+      - status
+      - data
+      type: object
+      properties:
+        path:
+          type: string
+        timestamp:
+          type: string
+        response_state:
+          type: boolean
+        status:
+          type: number
+        data:
+          type: string
     UpdateStockRequest:
       title: UpdateStockRequest
       required:
@@ -1103,35 +1133,41 @@ components:
       title: UpdateStock
       required:
       - path
-      - response_state
-      - message
       - timestamp
+      - response_state
+      - status
+      - data
       type: object
       properties:
         path:
           type: string
+        timestamp:
+          type: string
         response_state:
           type: boolean
-        message:
-          type: string
-        timestamp:
+        status:
+          type: number
+        data:
           type: string
     DeleteStock:
       title: DeleteStock
       required:
       - path
-      - response_state
-      - message
       - timestamp
+      - response_state
+      - status
+      - data
       type: object
       properties:
         path:
           type: string
+        timestamp:
+          type: string
         response_state:
           type: boolean
-        message:
-          type: string
-        timestamp:
+        status:
+          type: number
+        data:
           type: string
 security:
 - {}
